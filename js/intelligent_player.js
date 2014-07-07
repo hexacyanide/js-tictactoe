@@ -247,10 +247,10 @@ IntelligentPlayer.prototype.checkCenter = function() {
 IntelligentPlayer.prototype.checkCorner = function(i) {
   // console.log('checkCorner');
   
-  if (i === 0) return !!this.getTile(0, 0);
-  if (i === 1) return !!this.getTile(0, 2);
-  if (i === 2) return !!this.getTile(2, 0);
-  if (i === 3) return !!this.getTile(2, 2);
+  if (i === 0) return !this.board.getTile(0, 0);
+  if (i === 1) return !this.board.getTile(0, 2);
+  if (i === 2) return !this.board.getTile(2, 0);
+  if (i === 3) return !this.board.getTile(2, 2);
   return false;
 };
     

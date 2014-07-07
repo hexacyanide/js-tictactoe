@@ -12,25 +12,21 @@
 
 <script>
   var p1 = new IntelligentPlayer('o');
-  var p2 = new Player();
-  
+  var p2 = new IntelligentPlayer('x');
+
   var board = new Board();
   board.registerPlayer(p1, 'o');
   board.registerPlayer(p2, 'x');
-  
-  
-    
-  document.childNodes[1].childNodes[2].innerHTML = '<pre></pre>';
-    
+
+  var body = document.childNodes[1].childNodes[2];
+  body.innerHTML = '<pre></pre>';
+
   function refresh() {
-    document.childNodes[1].childNodes[2].childNodes[0].innerHTML = document.childNodes[1].childNodes[2].childNodes[0].innerHTML + board.toString() + '\n\n';
+    var node = body.childNodes[0];
+    node.innerHTML = node.innerHTML + board.toString() + '\n\n';
   }
-  
-  var bool;
-  while (!(bool = board.nextMove())) {
-    console.log(bool);
-    refresh();
-  }
+
+  while (!board.nextMove()) refresh();
   refresh();
 </script>
 
