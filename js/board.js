@@ -1,5 +1,6 @@
 function Board() {
   this.turns = 0;
+  
   this.players = {};
   this.tiles = [
     [], [], []
@@ -17,6 +18,11 @@ Board.prototype.nextMove = function() {
   var pieces = this.countPieces();
   
   var pos = player.makeMove(this);
+  
+  if (this.getTile(pos[0], pos[1]) ) {
+    return console.log('Player ' + symbol + ' tried to play on top of an existing tile. (' + this.getTile(pos[0], pos[1]) + ')');
+  }
+  
   this.setTile(pos[0], pos[1], symbol);
   
   if (this.countPieces() !== pieces + 1) {

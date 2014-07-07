@@ -23,8 +23,18 @@
   document.childNodes[1].childNodes[2].innerHTML = '<pre></pre>';
     
   function refresh() {
-    document.childNodes[1].childNodes[2].childNodes[0].innerHTML = board.toString();
+    document.childNodes[1].childNodes[2].childNodes[0].innerHTML = document.childNodes[1].childNodes[2].childNodes[0].innerHTML + board.toString() + '\n\n';
   }
+  
+  board.nextMove(); refresh();
+  board.nextMove(); refresh();
+  board.nextMove(); refresh();
+  board.nextMove(); refresh();
+  board.nextMove(); refresh();
+  board.nextMove(); refresh();
+  board.nextMove(); refresh();
+  board.nextMove(); refresh();
+  board.nextMove(); refresh();
 </script>
 
 </html>
