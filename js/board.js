@@ -18,23 +18,30 @@ Board.prototype.nextMove = function() {
   var pieces = this.countPieces();
   
   var pos = player.makeMove(this);
+  console.log(symbol + '\'s turn (' + this.turns + ')');
   
   if (this.getTile(pos[0], pos[1]) ) {
-    return console.log('Player ' + symbol + ' tried to play on top of an existing tile. (' + this.getTile(pos[0], pos[1]) + ')');
+    console.log('Player ' + symbol + ' tried to play on top of an existing tile. (' + this.getTile(pos[0], pos[1]) + ')');
+    return true;
   }
   
   this.setTile(pos[0], pos[1], symbol);
   
   if (this.countPieces() !== pieces + 1) {
-    return console.log('Player ' + symbol + ' is cheating!');
+    console.log('Player ' + symbol + ' is cheating or failed to play.');
+    return true;
   }
   
   var win = this.checkWin();
   if (win) {
-    return console.log('Player ' + win + ' has won the game.');
+    console.log('Player ' + win + ' has won the game.');
+    return true;
   }
   
-  this.turns++;
+  if (this.turns++ == 9) {
+    console.log('Game has ended in a tie.');
+    return true;
+  }
 };
 
 Board.prototype.countPieces = function() {

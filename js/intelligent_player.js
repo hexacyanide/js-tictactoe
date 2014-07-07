@@ -5,7 +5,7 @@ function IntelligentPlayer(symbol) {
 }
 
 IntelligentPlayer.prototype.makeMove = function(board) {
-  console.log('makeMove');
+  // console.log('makeMove');
   
   this.board = board;
   this.incrementTurns();
@@ -64,7 +64,7 @@ IntelligentPlayer.prototype.makeMove = function(board) {
 };
 
 IntelligentPlayer.prototype.attemptWin = function() {
-  console.log('attemptWin');
+  // console.log('attemptWin');
   
   var board = this.getLegacyBoard();
 
@@ -80,7 +80,7 @@ IntelligentPlayer.prototype.attemptWin = function() {
         	
     if (n == 2 && b == 1) {
       // System.out.println("completing row: " + r);
-      console.log('completing row: ' + r);
+      // console.log('completing row: ' + r);
       return this.completeRow(r);
     }
   }
@@ -95,7 +95,7 @@ IntelligentPlayer.prototype.attemptWin = function() {
         	
     if (n == 2 && b == 1) {
       // System.out.println("completing column: " + c);
-      console.log('completing column: ' + c);
+      // console.log('completing column: ' + c);
       return this.completeColumn(c);
     }
   }
@@ -126,11 +126,12 @@ IntelligentPlayer.prototype.attemptWin = function() {
     if (board[6] == ' ') return [2, 0];
   }
 
+  // console.log('attemptWin failed');
   return false;
 };
 
 IntelligentPlayer.prototype.attemptBlock = function() {
-  console.log('attemptBlock');
+  // console.log('attemptBlock');
 
   var board = this.getLegacyBoard();
   var opp = (this.symbol == 'x') ? 'o' : 'x';
@@ -193,11 +194,12 @@ IntelligentPlayer.prototype.attemptBlock = function() {
     if (board[6] == ' ') return [2, 0];
   }
 
+  // console.log('attemptBlock failed');
   return false;
 };
 
 IntelligentPlayer.prototype.getLegacyBoard = function() {
-  console.log('makeMove');
+  // console.log('getLegacyBoard ');
   
   var board = [];
   for (var i = 0; i < 3; i++) {
@@ -209,7 +211,7 @@ IntelligentPlayer.prototype.getLegacyBoard = function() {
 };
 
 IntelligentPlayer.prototype.completeRow = function(row) {
-  console.log('completeRow');
+  // console.log('completeRow');
   
   if (!this.board.getTile(row, 0)) return [row, 0];
   if (!this.board.getTile(row, 1)) return [row, 1];
@@ -217,7 +219,7 @@ IntelligentPlayer.prototype.completeRow = function(row) {
 };
 
 IntelligentPlayer.prototype.completeColumn = function(column) {
-  console.log('completeColumn');
+  // console.log('completeColumn');
   
   if (!this.board.getTile(0, column)) return [0, column];
   if (!this.board.getTile(1, column)) return [1, column];
@@ -225,7 +227,7 @@ IntelligentPlayer.prototype.completeColumn = function(column) {
 };
 
 IntelligentPlayer.prototype.incrementTurns = function() {
-  console.log('incrementTurns');
+  // console.log('incrementTurns');
   
   if (this.turns != 0) {
     this.turns += 2;
@@ -237,13 +239,13 @@ IntelligentPlayer.prototype.incrementTurns = function() {
 };
 
 IntelligentPlayer.prototype.checkCenter = function() {
-  console.log('checkCenter');
+  // console.log('checkCenter');
   
   return !!this.board.getTile(1, 1);
 };
     
 IntelligentPlayer.prototype.checkCorner = function(i) {
-  console.log('checkCorner');
+  // console.log('checkCorner');
   
   if (i === 0) return !!this.getTile(0, 0);
   if (i === 1) return !!this.getTile(0, 2);
@@ -253,14 +255,14 @@ IntelligentPlayer.prototype.checkCorner = function(i) {
 };
     
 IntelligentPlayer.prototype.checkCorners = function() {
-  console.log('checkCorners');
+  // console.log('checkCorners');
   
   return !!this.board.getTile(0, 0) || !!this.board.getTile(0, 2)
       || !!this.board.getTile(2, 0) || !!this.board.getTile(2, 2);
 };
     
 IntelligentPlayer.prototype.checkEdge = function(i) {
-  console.log('checkEdge');
+  // console.log('checkEdge');
   
   if (i === 0) return !this.board.getTile(0, 1);
   if (i === 1) return !this.board.getTile(1, 2);
@@ -270,20 +272,20 @@ IntelligentPlayer.prototype.checkEdge = function(i) {
 };
     
 IntelligentPlayer.prototype.checkEdges = function() {
-  console.log('checkEdges');
+  // console.log('checkEdges');
   
   return !!this.board.getTile(0, 1) || !!this.board.getTile(2, 1)
       || !!this.board.getTile(1, 0) || !!this.board.getTile(1, 2);
 };
     
 IntelligentPlayer.prototype.playCenter = function() {
-  console.log('playCenter');
+  // console.log('playCenter');
   
   return [1, 1];
 };
     
 IntelligentPlayer.prototype.playEdge = function(i) {
-  console.log('playEdge');
+  // console.log('playEdge');
   
   if (i === 0) return [0, 1];
   if (i === 1) return [1, 2];
@@ -292,7 +294,7 @@ IntelligentPlayer.prototype.playEdge = function(i) {
 };
     
 IntelligentPlayer.prototype.playCorner = function(i) {
-  console.log('playCorner');
+  // console.log('playCorner');
   
   if (i === 0) return [0, 0];
   if (i === 1) return [0, 2];
@@ -301,7 +303,7 @@ IntelligentPlayer.prototype.playCorner = function(i) {
 };
 
 IntelligentPlayer.prototype.getOwnCorner = function() {
-  console.log('getOwnCorner');
+  // console.log('getOwnCorner');
   
   if (this.board.getTile(0, 0) == this.symbol) return 0;
   if (this.board.getTile(0, 2) == this.symbol) return 1;
@@ -311,7 +313,7 @@ IntelligentPlayer.prototype.getOwnCorner = function() {
 };
 
 IntelligentPlayer.prototype.cornersAreOpposing = function() {
-  console.log('cornersAreOpposing');
+  // console.log('cornersAreOpposing');
   
   var corner = this.getOwnCorner();
   var opposite = (corner + 2) % 4;
@@ -319,7 +321,7 @@ IntelligentPlayer.prototype.cornersAreOpposing = function() {
 };
 
 IntelligentPlayer.prototype.countCorners = function() {
-  console.log('countCorners');
+  // console.log('countCorners');
   
   var i = 0;
   if (this.board.getTile(0, 0) === this.symbol) i++;
@@ -330,7 +332,7 @@ IntelligentPlayer.prototype.countCorners = function() {
 };
 
 IntelligentPlayer.prototype.remainingCorners = function() {
-  console.log('remainingCorners');
+  // console.log('remainingCorners');
   
   var i = 0;
   if (this.board.getTile(0, 0) === ' ') i++;
@@ -341,13 +343,13 @@ IntelligentPlayer.prototype.remainingCorners = function() {
 };
 
 IntelligentPlayer.prototype.randomPair = function() {
-  console.log('randomPair');
+  // console.log('randomPair');
   
   return [~~(Math.random() * 3), ~~(Math.random() * 3)];
 };
 
 IntelligentPlayer.prototype.playLastCorner = function() {
-  console.log('playLastCorner');
+  // console.log('playLastCorner');
   
   if (this.remainingCorners() == 1) {
     if (!this.board.getTile(0, 0)) return [0, 0];
@@ -358,7 +360,7 @@ IntelligentPlayer.prototype.playLastCorner = function() {
 };
 
 IntelligentPlayer.prototype.playRandomCorner = function() {
-  console.log('playRandomCorner');
+  // console.log('playRandomCorner');
   
   var r = ~~(Math.random() * 4);
   while (!this.checkCorner(r)) r = ~~(Math.random() * 4);
@@ -366,7 +368,7 @@ IntelligentPlayer.prototype.playRandomCorner = function() {
 };
 
 IntelligentPlayer.prototype.playRandomEdge = function() {
-  console.log('playRandomEdge');
+  // console.log('playRandomEdge');
   
   var r = ~~(Math.random() * 4);
   while (!this.checkEdge(r)) r = ~~(Math.random() * 4);
@@ -374,15 +376,15 @@ IntelligentPlayer.prototype.playRandomEdge = function() {
 };
 
 IntelligentPlayer.prototype.playRandomOpen = function() {
-  console.log('playRandomOpen');
+  // console.log('playRandomOpen');
   
   var r = this.randomPair();
-  while (!this.board.getTile(r[0], r[1])) r = this.randomPair();
+  while (this.board.getTile(r[0], r[1])) r = this.randomPair();
   return r;
 };
 
 IntelligentPlayer.prototype.fillRandomCorner = function() {
-  console.log('fillRandomCorner');
+  // console.log('fillRandomCorner');
   
   var n = ~~(Math.random() * 4);
   var corners = [

@@ -26,15 +26,10 @@
     document.childNodes[1].childNodes[2].childNodes[0].innerHTML = document.childNodes[1].childNodes[2].childNodes[0].innerHTML + board.toString() + '\n\n';
   }
   
-  board.nextMove(); refresh();
-  board.nextMove(); refresh();
-  board.nextMove(); refresh();
-  board.nextMove(); refresh();
-  board.nextMove(); refresh();
-  board.nextMove(); refresh();
-  board.nextMove(); refresh();
-  board.nextMove(); refresh();
-  board.nextMove(); refresh();
+  while (!board.nextMove()) {
+    refresh();
+  }
+  refresh();
 </script>
 
 </html>
