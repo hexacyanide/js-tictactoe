@@ -5,6 +5,5 @@ function Player(symbol) {
 Player.prototype.makeMove = function(board) {
   var spaces = board.getOpenSpaces();
   var pos = spaces[~~(Math.random() * spaces.length)];
-  
-  return pos;
+  return pos
 };

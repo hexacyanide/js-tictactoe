@@ -12,10 +12,12 @@ Board.prototype.registerPlayer = function(player, symbol) {
 
 Board.prototype.nextMove = function() {
   var symbol = (this.turns % 2 == 0) ? 'x' : 'o';
+  
   var player = this.players[symbol];
   var pieces = this.countPieces();
   
-  player.makeMove(this);
+  var pos = player.makeMove(this);
+  this.setTile(pos[0], pos[1], symbol);
   
   if (this.countPieces() !== pieces + 1) {
     return console.log('Player ' + symbol + ' is cheating!');
