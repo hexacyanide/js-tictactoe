@@ -3,20 +3,21 @@
 
 <head>
   <script src="js/board.js"></script>
-  <script src="js/player.js"></script>
+  <script src="js/random_player.js"></script>
   <script src="js/intelligent_player.js"></script>
+  <script src="js/input_player.js"></script>
 </head>
 
 <body>
 </body>
 
 <script>
-  var p1 = new IntelligentPlayer('o');
-  var p2 = new IntelligentPlayer('x');
+  var p1 = new InputPlayer('x');
+  var p2 = new IntelligentPlayer('o');
 
   var board = new Board();
-  board.registerPlayer(p1, 'o');
-  board.registerPlayer(p2, 'x');
+  board.registerPlayer(p1, 'x');
+  board.registerPlayer(p2, 'o');
 
   var body = document.childNodes[1].childNodes[2];
   body.innerHTML = '<pre></pre>';
