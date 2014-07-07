@@ -38,7 +38,7 @@ Board.prototype.nextMove = function() {
     return true;
   }
   
-  if (this.turns++ == 9) {
+  if (this.turns++ == 8) {
     console.log('Game has ended in a tie.');
     return true;
   }
